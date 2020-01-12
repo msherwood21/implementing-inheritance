@@ -6,8 +6,9 @@ class using C.
 # Ideas To Implement:
 * ~~Class with public data only~~
 * ~~Class with public and private data~~
-* Implement inheritance
-* Implement handling of base classes / base pointers on derived class??
+* ~~Implement inheritance~~
+* ~~Implement handling of base classes / base pointers on derived class??~~
+  * See the lesson comment in `main.c`
 * Implement virtual functions
 
 # Object Context

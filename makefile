@@ -1,12 +1,11 @@
 FLAGS=-Wall -Wextra -Wpedantic -g
+SRC=$(wildcard *.c)
+OBJ=$(patsubst %.c,%.o,$(SRC))
 
-virtual.out: virtual.o organism.o
+virtual.out: $(OBJ)
 	gcc $(FLAGS) -o $@ $^
 
-virtual.o: virtual.c
-	gcc -c $(FLAGS) -o $@ $<
-
-organism.o: organism.c
+%.o: %.c
 	gcc -c $(FLAGS) -o $@ $<
 
 clean:
