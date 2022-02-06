@@ -11,15 +11,29 @@
  *         put the private data definition here but then you've just made your
  *         private data public (whoops).
  */
+/*
+ * Follow up: C allows you to do `typedef struct <useless name> <public name>;`
+ *            which blows me away. But, that means the previous lesson is just
+ *            lack of experience.
+ */
+typedef char OrganismPrivateSize[1];
+
 typedef struct __Organism
 {
+    OrganismPrivateSize private;
     bool isBreathing;
 } Organism;
 
-Organism * Organism_Ctor();
-void Organism_Dtor(Organism * _ptr);
+/*
+ * LESSON: C++ gives you constructors and destructors for free if your memory
+ *         is statically allocated. We need to discriminate in C.
+ */
+Organism *Organism_Ctor();
+void Organism_CtorStatic(Organism *_ptr);
+void Organism_Dtor(Organism *_ptr);
+void Organism_DtorStatic(Organism *_ptr);
 
-bool Organism_IsBreathing(Organism * const _ptr);
-bool Organism_IsAlive(Organism * const _ptr);
+bool Organism_IsBreathing(Organism *const _ptr);
+bool Organism_IsAlive(Organism *const _ptr);
 
 #endif

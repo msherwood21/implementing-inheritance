@@ -3,19 +3,15 @@
 
 #include "organism.h"
 
-/*
- * LESSON: Were it not for the organism include and the ReturnParent function
- *         there would be no way to indicate this class is inheriting from the
- *         Organism class outside of a comment or a drawing.
- */
 typedef struct __Animal
 {
+    Organism parent;
     unsigned appendages;
 } Animal;
 
-Animal * Animal_Ctor();
-void Animal_Dtor(Animal * _ptr);
-
-Organism * Animal_ReturnParent(Animal * _ptr);
+Animal *Animal_Ctor();
+void Animal_CtorStatic(Animal *_ptr);
+void Animal_Dtor(Animal *_ptr);
+void Animal_DtorStatic(Animal *_ptr);
 
 #endif

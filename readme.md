@@ -1,14 +1,14 @@
 OBJECT-ORIENTED C
 =================
 Small repo that's the result of me seeing what it takes to implement a C++
-class using C.
+class using C. I'm making it slightly easier on myself by only looking into
+single inheritance.
 
 # Ideas To Implement:
 * ~~Class with public data only~~
 * ~~Class with public and private data~~
 * ~~Implement inheritance~~
-* ~~Implement handling of base classes / base pointers on derived class??~~
-  * See the lesson comment in `main.c`
+* ~~Implement handling of base classes / base pointers on derived class~~
 * Implement virtual functions
 
 # Object Context

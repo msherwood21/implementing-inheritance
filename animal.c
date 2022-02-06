@@ -1,46 +1,55 @@
 #include "animal.h"
+#include <assert.h>
 #include <stdlib.h>
 
+//-
+//- Private functions
+//-
 
-typedef struct __AnimalData
+void Animal_InitializeMembers(Animal *_ptr)
 {
-    Animal     pub;
-    Organism * parent;
-} AnimalData;
-
-Animal * Animal_Ctor()
-{
-    /*
-     * LESSON: Without language support for object creation and destruction you
-     *         are required to use the parent class' ctor / dtor functions. Only
-     *         they know how to initialize the private data for their class!
-     *         This means the data allocations could be in entirely different
-     *         ends of the memory map. That is, if you don't run out of memory
-     *         after creating (one of) the parent object(s)! Potentially
-     *         increased cache misses if you're calling different functions /
-     *         data up the heirarchy as well!
-     */
-    /*
-     * OPTIMIZATION: Export the size of an object's public + private data. This
-     *               leaks implementation details + recompilation issues at the
-     *               expense of allowing the children classes to allocate all
-     *               the memory they need in one go. This would require
-     *               rearchitecting how classes are created though as each
-     *               class still needs to be able to setup its own data.
-     */
-    AnimalData * ptr = calloc(1, sizeof(AnimalData));
-    ptr->parent = Organism_Ctor();
-
-    return (Animal *)ptr;
+    _ptr->appendages = 0;
 }
 
-void Animal_Dtor(Animal * _ptr)
+//-
+//- Public functions
+//-
+
+Animal *Animal_Ctor()
 {
-    Organism_Dtor(((AnimalData *)_ptr)->parent);
-    free(_ptr);
+    Animal *var = calloc(1, sizeof(Animal));
+
+    if (var != NULL)
+    {
+        Organism_CtorStatic(&(var->parent));
+        Animal_InitializeMembers(var);
+    }
+
+    return var;
 }
 
-Organism * Animal_ReturnParent(Animal * _ptr)
+void Animal_CtorStatic(Animal *_ptr)
 {
-    return ((AnimalData *)_ptr)->parent;
+    if (_ptr != NULL)
+    {
+        Organism_CtorStatic(&(_ptr->parent));
+        Animal_InitializeMembers(_ptr);
+    }
+}
+
+void Animal_Dtor(Animal *_ptr)
+{
+    if (_ptr != NULL)
+    {
+        Organism_DtorStatic(&(_ptr->parent));
+        free(_ptr);
+    }
+}
+
+void Animal_DtorStatic(Animal *_ptr)
+{
+    if (_ptr != NULL)
+    {
+        Organism_DtorStatic(&(_ptr->parent));
+    }
 }
