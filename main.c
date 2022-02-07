@@ -18,10 +18,10 @@ int main(void)
 
     printf("a has %u legs and is breathing (%u)\n",
            a->appendages,
-           Organism_IsBreathing(&(a->parent1)));
+           Organism_IsBreathing(&(a->parent)));
 
     printf("org is breathing (%u)\n", Organism_IsBreathing(&org));
-    printf("an is alive (%u)\n", Organism_IsAlive(&(an.parent1)));
+    printf("an is alive (%u)\n", Organism_IsAlive(&(an.parent)));
 
     Organism_Dtor(v);
     Animal_Dtor(a);
