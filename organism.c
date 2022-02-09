@@ -25,16 +25,16 @@ VirtualImpl Organism_VirtualLookup(TypeId typeId)
     //  is just proof of concept stuff
     if (typeId < ClassTypeId_EnumSize)
     {
-        if (organismTalkVirtuals[typeId] != NULL)
+        if ((*organismTalkVirtuals[typeId]) != NULL)
         {
-            return (VirtualImpl)organismTalkVirtuals[typeId];
+            return (VirtualImpl)(*organismTalkVirtuals[typeId]);
         }
         else
         {
             //- Also, in a production setting I believe you walk the parent
             //  classes until you arrive at the base implementation. We cut out
             //  that logic here for simplicity.
-            return (VirtualImpl)organismTalkVirtuals[ClassTypeId_Organism];
+            return (VirtualImpl)(*organismTalkVirtuals[ClassTypeId_Organism]);
         }
     }
     else

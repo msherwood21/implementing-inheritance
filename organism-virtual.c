@@ -1,11 +1,5 @@
 #include "organism-virtual.h"
 
-Organism_TalkVirtualSig organismTalkVirtuals[ClassTypeId_EnumSize];
-
-void Organism_InitializeStaticVirtual()
-{
-    organismTalkVirtuals[ClassTypeId_Organism] = Organism_TalkSigVirtual;
-    organismTalkVirtuals[ClassTypeId_Animal] = Animal_TalkSigVirtual;
-    organismTalkVirtuals[ClassTypeId_Dog] = Dog_TalkSigVirtual;
-    organismTalkVirtuals[ClassTypeId_Cat] = Cat_TalkSigVirtual;
-}
+Organism_TalkVirtualSig * organismTalkVirtuals[ClassTypeId_EnumSize] = {
+    &Organism_TalkSigVirtual, &Animal_TalkSigVirtual, &Dog_TalkSigVirtual,
+    &Cat_TalkSigVirtual};

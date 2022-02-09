@@ -1,4 +1,4 @@
-#include "organism-virtual.h"
+#include "organism.h"
 #include "animal.h"
 #include "dog.h"
 #include "cat.h"
@@ -6,12 +6,6 @@
 
 int main(void)
 {
-    //- C++ has the ability to see all symbols in a binary and create virtual
-    //  tables statically. We don't have that ability with C. The following method
-    //  of adding symbols at an initialization point is not great, but it keeps us
-    //  from having to worry about a host of virtual table related issues.
-    Organism_InitializeStaticVirtual();
-
     //- Class creation with public, private and virtual data
     Organism organism;
     Organism_CtorStatic(&organism);

@@ -7,14 +7,7 @@
 //- Virtual Functions
 //-
 
-char *Cat_TalkImplVirtual(__attribute__((unused)) Organism *_ptr)
-{
-    //- We don't have any logic here that requires it, but we could safely
-    //  recast the pointer to an Cat if we'd like.
-    return "Meow...";
-}
-
-Organism_TalkVirtualSig Cat_TalkSigVirtual = &Cat_TalkImplVirtual;
+Organism_TalkVirtualSig Cat_TalkSigVirtual = NULL;
 
 //-
 //- Private functions
@@ -68,13 +61,9 @@ void Cat_DtorStatic(Cat *_ptr)
 //- By this point you'll see that we have to keep jumping into the parent of
 //  the parent to pass in the data we need to pass in. This is really tedious,
 //  so deep object trees are not recommended.
-char *Cat_TalkVirtual(Cat *_ptr, bool forceThis)
+char *Cat_TalkVirtual(Cat *_ptr, __attribute__((unused)) bool forceThis)
 {
-    if (forceThis)
-    {
-        return Cat_TalkImplVirtual(&(_ptr->parent.parent));
-    }
-    else if (_ptr != NULL)
+    if (_ptr != NULL)
     {
         Organism_TalkVirtualSig talkImpl = (Organism_TalkVirtualSig)_ptr->parent.parent.virtual.lookup(_ptr->parent.parent.virtual.id);
 

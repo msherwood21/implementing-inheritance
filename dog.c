@@ -10,7 +10,7 @@
 char *Dog_TalkImplVirtual(__attribute__((unused)) Organism *_ptr)
 {
     //- We don't have any logic here that requires it, but we could safely
-    //  recast the pointer to an Dog if we'd like.
+    //  recast the pointer to a Dog if we'd like.
     return "Woof Woof!";
 }
 
