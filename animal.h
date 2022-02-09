@@ -14,4 +14,6 @@ void Animal_CtorStatic(Animal *_ptr);
 void Animal_Dtor(Animal *_ptr);
 void Animal_DtorStatic(Animal *_ptr);
 
+char *Animal_TalkVirtual(Animal *_ptr, bool forceThis);
+
 #endif

@@ -9,10 +9,10 @@ single inheritance.
 * ~~Class with public and private data~~
 * ~~Implement inheritance~~
 * ~~Implement handling of base classes / base pointers on derived class~~
-* Implement virtual functions
+* ~~Implement virtual functions~~
 
 # Object Context
-When completed the object tree should look like the following:
+The completed object tree looks like the following:
 
 ```
 Organism
@@ -23,6 +23,10 @@ Organism
   /  \
 Cat  Dog
 ```
+
+# Running The Code
+This was developed on a Windows 10 and Windows 11 x64 PC in WSL. Use the
+Ubuntu distributed gcc version 9.3.0.
 
 # License
 This is free and unencumbered software released into the public domain.
